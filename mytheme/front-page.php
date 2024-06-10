@@ -1,5 +1,16 @@
 <?php get_header();?>
+<?php 
+    if(have_posts()):
+        while(have_posts()): the_post();
+        ?>
+        
+        <a href="<?php the_permalink(); ?>"></a>
+        <h1><?php the_content();?></h1><br>
 
-<h1>This is front page</h1>
+        <?php 
+        //your code to display posts goes here
+        endwhile;
+    endif;
+  ?>
 
 <?php get_footer();?>
