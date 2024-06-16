@@ -5,3 +5,23 @@ Theme Name: Responsive Blog
 div {
     background-color: aliceblue;
 }
+
+.nav-menu {
+    background-color: rgb(170, 168, 168);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-menu ul {
+    list-style-type: none;
+}
+.nav-menu li {
+    font-size:30px;
+    padding:10px;
+    margin: 10px;
+}
+
+.post-title {
+    font-size: 30px;
+    padding:10px;
+}
