@@ -1,0 +1,21 @@
+/*
+Theme Name: My Theme
+Author: Zeeshan Ahmed Channa
+*/
+
+
+div {
+    background-color: aliceblue;
+}
+
+.nav-menu {
+    background-color: rgb(240, 211, 211);
+}
+.nav-menu ul {
+    list-style-type: none;
+}
+.nav-menu li {
+    font-size: 30;
+    padding: 10px;
+    margin: 10px;
+}
