@@ -1,6 +1,7 @@
 
-    <?php get_header(); ?>
+<?php get_header(); ?>
 
+<body>
     <div class="hero-section">
         <div class="hero-msg">
             <p>You are on Amazon.com. You can also shop amazon.pk for millions of products with fast local delivery. <a href="amazon.pk">Click here to go to amazon.pk</a></p>
@@ -53,6 +54,34 @@
              <p>See more</p>
             </div>
          </div>
+    </div>
+
+    <div class="recent-posts">
+        <?php
+            while(have_posts()) {
+            the_post(); ?>
+            <h2><?php the_title(); ?></h2>
+            <p><a href="<?php the_permalink(); ?>">Read More</a></p>
+            <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" />
+        <?php }
+        ?>
+    </div>
+
+    <div class="recent-pages">
+        <?php 
+            $pages_query = new WP_Query( array(
+                'post_type' => 'post',
+                'posts_per_page' => 1,
+            ));
+
+            while($pages_query->have_posts()) {
+                $pages_query->the_post();
+                
+                echo '<h1>'. get_the_title() . '</h1>';
+                echo '<p>' . get_the_content() .'</p>';
+
+            }
+        ?>
     </div>
    
     <?php get_footer(); ?>

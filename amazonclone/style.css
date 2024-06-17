@@ -241,3 +241,13 @@ ul p{
 .copyright{
   padding: 5px;
 }
+
+
+
+.single_posts {
+  background-color: #65656b;
+  color:white;
+  width: 60%;
+  margin:auto;
+  padding: 50px;
+}
