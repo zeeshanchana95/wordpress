@@ -1,6 +1,12 @@
 
 <?php get_header(); ?>
 
+<?php 
+    // print_r(get_stylesheet_uri());          //http://localhost:10004/wp-content/themes/amazonclone/style.css
+    // print_r(get_theme_file_uri());          //http://localhost:10004/wp-content/themes/amazonclone
+    // print_r(get_template_directory_uri());  //http://localhost:10004/wp-content/themes/amazonclone
+?>
+
 <body>
     <div class="hero-section">
         <div class="hero-msg">
@@ -11,46 +17,46 @@
         <div class="box1 box">
            <div class="box-content">
             <h2>Clothes</h2>
-            <div class="box-img" style="background-image: url('box1_image.jpg');"></div>
+            <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box1_image.jpg"); ?>"></div>
             <p>See more</p>
            </div>
         </div>
         <div class="box2 box">  <div class="box-content">
             <h2>Health & Personal Care</h2>
-            <div class="box-img" style="background-image: url('box2_image.jpg');"></div>
+            <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box2_image.jpg"); ?>"></div>
             <p>See more</p>
            </div></div>
         <div class="box3 box">  <div class="box-content">
             <h2>Furniture</h2>
-            <div class="box-img" style="background-image: url('box3_image.jpg');"></div>
+            <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box3_image.jpg"); ?>"></div>
             <p>See more</p>
            </div></div>
         <div class="box4 box">  <div class="box-content">
             <h2>Phones & Tablets</h2>
-            <div class="box-img" style="background-image: url('box4_image.jpg');"></div>
+            <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box4_image.jpg"); ?>"></div>
             <p>See more</p>
            </div>
         </div>
         <div class="box1 box">
             <div class="box-content">
              <h2>Beauty Picks</h2>
-             <div class="box-img" style="background-image: url('box5_image.jpg');"></div>
+             <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box5_image.jpg"); ?>"></div>
              <p>See more</p>
             </div>
          </div>
          <div class="box2 box">  <div class="box-content">
              <h2>Pet Supplies</h2>
-             <div class="box-img" style="background-image: url('box6_image.jpg');"></div>
+             <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box6_image.jpg"); ?>"></div>
              <p>See more</p>
             </div></div>
          <div class="box3 box">  <div class="box-content">
              <h2>New Arrival in Toys</h2>
-             <div class="box-img" style="background-image: url('box7_image.jpg');"></div>
+             <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box7_image.jpg"); ?>"></div>
              <p>See more</p>
             </div></div>
          <div class="box4 box">  <div class="box-content">
              <h2>Discover Fashion</h2>
-             <div class="box-img" style="background-image: url('box8_image.jpg');"></div>
+             <div class="box-img" style="background-image: url('<?php echo get_theme_file_uri("/images/box8_image.jpg"); ?>"></div>
              <p>See more</p>
             </div>
          </div>
@@ -67,11 +73,12 @@
         ?>
     </div>
 
+    <!-- show new created post types -->
     <div class="recent-pages">
         <?php 
             $pages_query = new WP_Query( array(
-                'post_type' => 'post',
-                'posts_per_page' => 1,
+                'post_type' => 'to-do ',
+                'posts_per_page' => -1,
             ));
 
             while($pages_query->have_posts()) {
