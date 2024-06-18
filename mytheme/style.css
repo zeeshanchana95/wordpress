@@ -1,6 +1,8 @@
-/* 
-Theme Name: Responsive Blog
+/*
+Theme Name: My Theme
+Author: Zeeshan Ahmed Channa
 */
+
 
 div {
     background-color: aliceblue;
@@ -8,20 +10,22 @@ div {
 
 .nav-menu {
     background-color: rgb(170, 168, 168);
+   
+}
+.nav-menu ul {
+    list-style-type: none;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.nav-menu ul {
-    list-style-type: none;
-}
 .nav-menu li {
-    font-size:30px;
-    padding:10px;
+    font-size: 30;
+    padding: 10px;
     margin: 10px;
 }
 
 .post-title {
     font-size: 30px;
-    padding:10px;
+    padding: 10px;
 }
+

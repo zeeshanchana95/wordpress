@@ -1,16 +1,22 @@
-<?php get_header();?>
+<?php get_header(); ?>
+
 <?php 
-    if(have_posts()):
-        while(have_posts()): the_post();
-        ?>
-        
-        <a href="<?php the_permalink(); ?>"></a>
-        <h1><?php the_content();?></h1><br>
+    $query = new WP_Query( array(
+        'category_name' => 'Books'
+    ) );
 
-        <?php 
-        //your code to display posts goes here
-        endwhile;
+    if ( have_posts() ) : 
+        while ( have_posts() ) :
+            the_post(); ?>
+            <a href="<?php the_permalink(); ?>">
+                <h1><?php the_title(); ?></h1>
+            </a>
+            <p><?php the_content(); ?></p><br />
+        <?php endwhile;
     endif;
-  ?>
 
-<?php get_footer();?>
+    //Reset post data to avoid conflicts
+    wp_reset_postdata();
+?>
+
+<?php get_footer(); ?>
