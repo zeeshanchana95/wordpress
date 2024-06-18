@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day 07 WordPress Theme Files</title>
+    <title>Day 10 WordPress Features</title>
 </head>
 <?php 
     // to show menu on our wordpress theme [used in heade.php to show menu in header section]
