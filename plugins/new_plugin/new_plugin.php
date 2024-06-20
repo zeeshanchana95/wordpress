@@ -20,12 +20,34 @@
     function display_woocommerce_categories() {
         $product_categories = get_terms(
             array(
-                'taxanomy' => 'product_cat',
-
+                'taxonomy' => 'product_cat',
+                'orderby' => 'name',
+                'order' => 'ASC',
+                'hide_empty' => true,
             )
         );
+
+        if(!empty($product_categories)) {
+            $output = '<div class="woocommerce_categories">';
+
+            foreach($product_categories as $category) {
+                $thumbnail_id = get_term_meta($category -> term_id, 'thumbnail_id', true);
+                $image_url = wp_get_attachment_url($thumbnail_id); //thumbnail url
+                $category_name = $category->name; //category name
+                $category_url = get_term_link($category);
+
+                $output .= '<div class= "single_category">';
+                    $output .= '<h5>' . $category_name . '</h5>';
+                    $output .= 'img src="'. $image_url .'" alt="'. $category_name.'"/>';
+                    $output .= '<a href="'.$category_url.'">  Read More </a>';
+                $output .= '</div>';
+            }
+            $output .= '</div>';
+            return $output;
+        }   
     }
 
+    add_shortcode('ecommmerce_categories', 'display_woocommerce_categories');
 
 
 
