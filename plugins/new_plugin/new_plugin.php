@@ -33,13 +33,13 @@
             foreach($product_categories as $category) {
                 $thumbnail_id = get_term_meta($category -> term_id, 'thumbnail_id', true);
                 $image_url = wp_get_attachment_url($thumbnail_id); //thumbnail url
-                $category_name = $category->name; //category name
+                $category_name = $category->name; //category na me
                 $category_url = get_term_link($category);
 
                 $output .= '<div class= "single_category">';
                     $output .= '<h5>' . $category_name . '</h5>';
-                    $output .= 'img src="'. $image_url .'" alt="'. $category_name.'"/>';
-                    $output .= '<a href="'.$category_url.'">  Read More </a>';
+                    $output .= '<img src="'. $image_url .'" alt="'. $category_name.'"/>';
+                    $output .= '<a category_id="'. $category->term_id .'">  Read More </a>';
                 $output .= '</div>';
             }
             $output .= '</div>';
@@ -47,7 +47,7 @@
         }   
     }
 
-    add_shortcode('ecommmerce_categories', 'display_woocommerce_categories');
+    add_shortcode('ecommerce_categories', 'display_woocommerce_categories');
 
 
 
