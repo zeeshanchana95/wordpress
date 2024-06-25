@@ -12,6 +12,12 @@
     function new_plugin_files() {
         wp_enqueue_style('new-plugin-css', plugin_dir_url(__FILE__) . '/css/style.css');
         wp_enqueue_script('new-plugin-js', plugin_dir_url(__FILE__) . '/js/script.js');
+
+        // localizating the script
+        wp_localize_script('new-plugin-js', 'ajax-object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('load_products')
+        ));
     }
     add_action('wp_enqueue_scripts', 'new_plugin_files');
 
@@ -39,7 +45,7 @@
                 $output .= '<div class= "single_category">';
                     $output .= '<h5>' . $category_name . '</h5>';
                     $output .= '<img src="'. $image_url .'" alt="'. $category_name.'"/>';
-                    $output .= '<a category_id="'. $category->term_id .'">  Read More </a>';
+                    $output .= '<a href="#" category_id="'. $category->term_id .'">  Read More </a>';
                 $output .= '</div>';
             }
             $output .= '</div>';
@@ -50,9 +56,20 @@
     add_shortcode('ecommerce_categories', 'display_woocommerce_categories');
 
 
+    function load_products_by_category() {
+        check_ajax_referer('load_products_nonce', 'nonce');
+        // storing whole object of specific category
+        $category_id = 26;
+        $term = get_term_by("id", $category_id, 'product_cat');
+        // get slug from id
+        $category_slug = $term -> slug;
+        // store whole data of specific category by slug
+        $product_html = do_shortcode('[products category="'.$category_slug.'"]');
 
+    }
 
-
+    add_action('wp_ajax_load_products_by_category', 'load_products_by_category'); //for logged in user
+    add_action('wp_ajax_nopriv_load_products_by_category', 'load_products_by_category'); //for user which has no previlidges of login
 
 
 
