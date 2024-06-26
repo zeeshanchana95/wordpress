@@ -1,6 +1,8 @@
 <?php 
     function amazon_theme_styles() {
         wp_enqueue_style('style-css', get_theme_file_uri('/css/style.css'));
+        wp_enqueue_script('jquery-cdn', 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js');
+
     }
     add_action('wp_enqueue_scripts', 'amazon_theme_styles');
 

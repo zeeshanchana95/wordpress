@@ -14,12 +14,14 @@
         echo do_shortcode('[ecommerce_categories]');
     ?>
 </div>
-
-<div class="single_posts all-products">
-    <h4>All Products</h4>
-    <div id="products-container">
-        <!-- products will be appended -->
-        
+<div class="products-main">
+    <button id="back-button">Go Back</button>
+    <div class="single_posts all-products">
+        <h4>All Products</h4>
+        <div id="products-container">
+            <!-- products will be appended -->
+            
+        </div>
     </div>
 </div>
 
