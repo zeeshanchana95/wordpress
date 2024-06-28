@@ -7,16 +7,14 @@
         Version: 1.0
     */
 
-    // function to add css and js files
     function new_plugin_files() {
         wp_enqueue_style('new-plugin-css', plugin_dir_url(__FILE__) . 'css/style.css');
+        wp_enqueue_script('new-plugin-js', plugin_dir_url(__FILE__) . 'js/script.js', array('jquery'));
         wp_enqueue_script('jquery');
-        wp_enqueue_script('new-plugin-js', plugin_dir_url(__FILE__) . 'js/script.js', array('jquery'), null, true);
 
-        // localizing the script
         wp_localize_script('new-plugin-js', 'ajax_object', array(
-            'ajax_url' => admin_url('admin-ajax.php'), // Corrected admin-ajax.php
-            'nonce' => wp_create_nonce('load_products_nonce') // Corrected nonce
+            'ajax_url' => admin_url('admin-ajax.php'), 
+            'nonce' => wp_create_nonce('load_products_nonce'), 
         ));
     }
     add_action('wp_enqueue_scripts', 'new_plugin_files');
